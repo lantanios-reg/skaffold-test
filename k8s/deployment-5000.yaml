@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node5000
+spec:
+  selector:
+    matchLabels:
+      app: node5000
+  template:
+    metadata:
+      labels:
+        app: node5000
+    spec:
+      containers:
+        - name: internal-server-node5000
+          image: port-dock-server
+          ports:
+            - containerPort: 5000
+      restartPolicy: Always
+            

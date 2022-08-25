@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node3001
+spec:
+  selector:
+    matchLabels:
+      app: node3001
+  template:
+    metadata:
+      labels:
+        app: node3001
+    spec:
+      containers:
+        - name: node3001
+          image: conditional-port-dock
+          # resources:
+          #   limits:
+          #     memory: "256Mi"
+          #     cpu: "500m"
+          ports:
+            - containerPort: 3001
+          env:
+            - name: test
+              value: "1"
+            - name: INTERNAL_SERVICE_ADDRESS
+              value: node5000:5000
+      restartPolicy: Always

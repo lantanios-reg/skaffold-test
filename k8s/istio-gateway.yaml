@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: istio-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default ingress gateway
+  servers:
+    - port:
+        number: 3000
+        name: http-node3000
+        protocol: HTTP
+      hosts:
+        - "hulbon.org"
+    - port:
+        number: 3001
+        name: http-node3001
+        protocol: HTTP
+      hosts:
+        - "hulbon.org"
